@@ -14,6 +14,10 @@ public class BubbleSort<T extends Comparable<T>> extends AbstractSorting<T> {
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {
 		
+		if (array == null || leftIndex < 0 || leftIndex > rightIndex || rightIndex > array.length ) {
+			return;
+		}
+		
 		boolean troca = true;
 		
 		while (troca) {
