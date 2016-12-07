@@ -17,3 +17,33 @@
   <level>FINE</level>
   <message>File 115210685-THALYTA FABRINE DA TRINDADE.zip was received. It was sent by THALYTA FABRINE DA TRINDADE from IP 150.165.74.119</message>
 </record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-11-30T22:23:54.993-0300</date>
+  <logger>THALYTA FABRINE DA TRINDADE</logger>
+  <level>FINE</level>
+  <message>File 115210685-THALYTA FABRINE DA TRINDADE.zip was received. It was sent by THALYTA FABRINE DA TRINDADE from IP 192.168.1.11</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-11-30T22:27:17.879-0300</date>
+  <logger>THALYTA FABRINE DA TRINDADE</logger>
+  <level>FINE</level>
+  <message>File 115210685-THALYTA FABRINE DA TRINDADE.zip was received. It was sent by THALYTA FABRINE DA TRINDADE from IP 192.168.1.11</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-11-30T22:30:03.189-0300</date>
+  <logger>THALYTA FABRINE DA TRINDADE</logger>
+  <level>FINE</level>
+  <message>File 115210685-THALYTA FABRINE DA TRINDADE.zip was received. It was sent by THALYTA FABRINE DA TRINDADE from IP 192.168.1.11</message>
+</record>
