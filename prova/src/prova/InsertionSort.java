@@ -13,7 +13,7 @@ public class InsertionSort<T extends Comparable<T>> {
 				T aux = array[j];
 				array[j] = array[j+1];
 				array[j+1] = aux;
-			}
+			} 
 		}
 	}
 }

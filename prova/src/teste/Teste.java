@@ -9,6 +9,7 @@ import org.junit.Test;
 import prova.BubbleSort;
 import prova.CombSort;
 import prova.InsertionSort;
+import prova.MergeSort;
 import prova.QuickSort;
 import prova.SelectionSort;
 
@@ -19,7 +20,7 @@ public class Teste {
 	private Integer[] vetorVazio = {};
 	private Integer[] vetorValoresRepetidos;
 	private Integer[] vetorValoresIguais;
-	private SelectionSort<Integer> selection;
+	private MergeSort<Integer> merge;
 	private QuickSort<Integer> quick;
 
 	@Before
@@ -30,7 +31,7 @@ public class Teste {
 				11, 18, 36 });
 		populaVetorRepetido(new Integer[] { 4, 9, 3, 4, 0, 5, 1, 4 });
 		populaVetorIgual(new Integer[] { 6, 6, 6, 6, 6, 6 });
-		this.selection = new SelectionSort<>();
+		this.merge = new MergeSort<>();
 		this.quick = new QuickSort<>();
 
 
@@ -56,7 +57,7 @@ public class Teste {
 
 	public void genericTest(Integer[] array) {
 		Integer[] copy1 = Arrays.copyOf(array, array.length);
-		quick.sort(array, 0, array.length-1);
+		merge.sort(array, 0, array.length-1);
 		Arrays.sort(copy1);
 		Assert.assertArrayEquals(copy1, array);
 	}
