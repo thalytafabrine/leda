@@ -4,35 +4,35 @@ public class QueueImpl<T> implements Queue<T> {
 
 	private T[] array;
 	private int tail;
-	private int head;
+	private final int CAP;
 
 	@SuppressWarnings("unchecked")
 	public QueueImpl(int size) {
+		if (size < 0) {
+			size = 0;
+		}
 		array = (T[]) new Object[size];
 		tail = -1;
-		head = -1;
+		CAP = size;
 	}
 
 	@Override
 	public T head() {
-		if (this.isEmpty()) {
-            return null;
-		}
-        return this.array[head];
+		return this.array[0];
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return tail == -1;
+		return this.tail == -1;
 	}
 
 	@Override
 	public boolean isFull() {
-		return tail == array.length - 1;
+		return this.tail == CAP - 1;
 	}
 
 	private void shiftLeft() {
-		for(int i = 0; i < array.length-1; i++) {
+		for(int i = 0; i < this.tail; i++) {
 			array[i] = array[i+1];
 		}
 	}
@@ -42,14 +42,14 @@ public class QueueImpl<T> implements Queue<T> {
 		if (isFull()) {
 			throw new QueueOverflowException();
 		}
-        if (isEmpty()) {
-        	this.head = 0;
-            this.tail = 0;
-            this.array[0] = element;
-        } else {
-            tail = (tail + 1) % array.length;
-            this.array[tail] = element;
-        }
+		if (element != null) {
+			if (isEmpty()) {
+				this.tail = 0;
+				this.array[0] = element;
+			} else {
+				this.array[this.tail++] = element;
+			}
+		}
 	}
 
 	@Override
@@ -58,7 +58,6 @@ public class QueueImpl<T> implements Queue<T> {
             throw new QueueUnderflowException();
 		}
 		T elementoRemovido = this.array[0];
-		this.array[0] = null;
 		this.shiftLeft();
 		tail--;
 		return elementoRemovido;
