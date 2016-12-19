@@ -3,4 +3,8 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
 <fullyQualifiedTypeName name="prova.MergeSort"/>
+<fullyQualifiedTypeName name="adt.queue.QueueOverflowException"/>
+<fullyQualifiedTypeName name="adt.queue.CircularQueue"/>
+<fullyQualifiedTypeName name="adt.stack.StackImpl"/>
+<fullyQualifiedTypeName name="adt.queue.QueueImpl"/>
 </qualifiedTypeNameHistroy>

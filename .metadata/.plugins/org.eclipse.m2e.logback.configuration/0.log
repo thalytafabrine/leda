@@ -192,3 +192,7 @@
 2016-12-12 15:31:25,041 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/thalytaft/workspace2/R05/src/test/resources
 2016-12-12 15:31:28,645 [Worker-33] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/thalytaft/workspace2/R05
 2016-12-12 15:31:28,646 [Worker-33] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests install
+2016-12-12 15:33:26,187 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-12 15:33:26,217 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/thalytaft/workspace2/R05/src/main/resources
+2016-12-12 15:33:26,220 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-12 15:33:26,224 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/thalytaft/workspace2/R05/src/test/resources
