@@ -10,54 +10,88 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 
 	@Override
 	public boolean isEmpty() {
-		if(this.head.isNIL()) {
-			return true;
-		}
-		return false;
+		return (this.getHead().isNIL());
 	}
 
 	@Override
 	public int size() {
-		int count = 0;
-		SingleLinkedListNode<T> no = this.head;
-		
-		while(!no.isNIL()) {
-			no = no.next;
-			count++;
+		int size = 0;
+
+		if (!isEmpty()) {
+			SingleLinkedListNode<T> aux = this.getHead();
+
+			while (!aux.isNIL()) {
+				size++;
+				aux = aux.getNext();
+			}
 		}
-		return count;
+
+		return size;
 	}
 
 	@Override
 	public T search(T element) {
-		T out = null;
-		if(element != null) {
-			SingleLinkedListNode<T> no = this.head;
-			while(!no.isNIL()) {
-				if(no.getData().equals(element))
-					return no.getData();
-				no = no.next;
+		T result = null;
+		if (!isEmpty() && element != null) {
+			SingleLinkedListNode<T> aux = this.head;
+			while (!aux.isNIL() && !aux.getData().equals(element)) {
+				aux = aux.getNext();
+			}
+			if (!aux.isNIL() && aux.getData().equals(element)) {
+				result = aux.getData();
 			}
 		}
-		return out;
+		return result;
 	}
 
 	@Override
 	public void insert(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		if (element != null) {
+			SingleLinkedListNode<T> aux = this.head;
+			while (!aux.isNIL())
+				aux = aux.getNext();
+			aux.setData(element);
+			aux.setNext(new SingleLinkedListNode<T>());
+		}
 	}
 
 	@Override
 	public void remove(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+
+		if (element != null && !isEmpty()) {
+			if (this.head.getData().equals(element)) {
+				head = head.getNext();
+			} else {
+				SingleLinkedListNode<T> previous = new SingleLinkedListNode<T>();
+				SingleLinkedListNode<T> aux = this.getHead();
+
+				while (!aux.isNIL() && !aux.getData().equals(element)) {
+					previous = aux;
+					aux = aux.getNext();
+				}
+				if (!aux.isNIL()) {
+					previous.setNext(aux.getNext());
+				}
+			}
+		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T[] toArray() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		int size = this.size();
+		int index = 0;
+
+		T[] array = (T[]) new Object[size];
+		SingleLinkedListNode<T> aux = this.getHead();
+
+		while (!aux.isNIL()) {
+			array[index] = aux.getData();
+			aux = aux.getNext();
+			index++;
+		}
+
+		return array;
 	}
 
 	public SingleLinkedListNode<T> getHead() {

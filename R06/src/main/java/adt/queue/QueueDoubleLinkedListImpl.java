@@ -9,38 +9,47 @@ public class QueueDoubleLinkedListImpl<T> implements Queue<T> {
 	protected int size;
 
 	public QueueDoubleLinkedListImpl(int size) {
+		if (size < 0)
+			size = 0;
 		this.size = size;
 		this.list = new DoubleLinkedListImpl<T>();
 	}
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (isFull()) {
+			throw new QueueOverflowException();
+		}
+		list.insert(element);
 	}
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (!isEmpty()) {
+            T element = this.head();
+            this.list.removeFirst();
+            return element;
+        } else {
+            throw new QueueUnderflowException();
+        }
 	}
 
 	@Override
 	public T head() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T element = null;
+		if (!isEmpty())
+			element = ((DoubleLinkedListImpl<T>) list).getHead().getData();
+		return element;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.list.isEmpty();
 	}
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.size == list.size();
 	}
 
 }
