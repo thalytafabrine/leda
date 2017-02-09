@@ -18,6 +18,9 @@ public class QueueImpl<T> implements Queue<T> {
 
 	@Override
 	public T head() {
+		if (this.isEmpty()) {
+			return null;
+		}
 		return this.array[0];
 	}
 
@@ -47,7 +50,7 @@ public class QueueImpl<T> implements Queue<T> {
 				this.tail = 0;
 				this.array[0] = element;
 			} else {
-				this.array[this.tail++] = element;
+				this.array[++this.tail] = element;
 			}
 		}
 	}
