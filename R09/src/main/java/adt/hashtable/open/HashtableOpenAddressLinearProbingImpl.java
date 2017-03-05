@@ -26,15 +26,15 @@ public class HashtableOpenAddressLinearProbingImpl<T extends Storable> extends
 			int hashIndex = ((HashFunctionLinearProbing<T>) hashFunction).hash(element, probe);
 			
 			while (probe < table.length) {
-				if (table[hashIndex] != null) {
-					probe++;
-					hashIndex = ((HashFunctionLinearProbing<T>) hashFunction).hash(element, probe);
-					COLLISIONS++;
-				} else if (table[hashIndex] == null || table[hashIndex] instanceof DELETED) {
-					elements++;
-					table[hashIndex] = element;
-					return;
-				}
+ 				if (table[hashIndex] == null || deletedElement.equals(table[hashIndex])) {
+                	table[hashIndex] = element;
+                 	super.elements++;
+                 	return;
+              	} else {
+                 	probe++;
+                 	hashIndex = ((HashFunctionLinearProbing<T>) hashFunction).hash(element, probe);
+                 	super.COLLISIONS++;
+              	}
 			}
 		}
 	}
