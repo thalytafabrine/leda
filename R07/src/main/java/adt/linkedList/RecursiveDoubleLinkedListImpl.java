@@ -42,10 +42,17 @@ public class RecursiveDoubleLinkedListImpl<T> extends RecursiveSingleLinkedListI
 		if (element != null) {
 			RecursiveDoubleLinkedListImpl<T> second = new RecursiveDoubleLinkedListImpl(this.getData(), this.getNext(),
 					this);
-			this.setData(element);
-			this.setNext(second);
-			if (this.getPrevious() == null)
-				this.setPrevious(new RecursiveDoubleLinkedListImpl(null, this, null));
+			if (!isEmpty()) {
+				next = new RecursiveDoubleLinkedListImpl<T>(getData(), getNext(), this);
+				((RecursiveDoubleLinkedListImpl<T>) getNext()).setPrevious((RecursiveDoubleLinkedListImpl<T>) next);
+				setData(element);
+				setNext(next);
+			} else {
+				next = new RecursiveDoubleLinkedListImpl<T>();
+				setData(element);
+				setNext(next);
+				setPrevious((RecursiveDoubleLinkedListImpl<T>) next);
+			}
 		}
 	}
 
@@ -69,11 +76,11 @@ public class RecursiveDoubleLinkedListImpl<T> extends RecursiveSingleLinkedListI
 				this.setNext(null);
 				this.setData(null);
 			} else {
-				((DoubleLinkedList<T>) this.getNext()).removeLast();
+				((RecursiveDoubleLinkedListImpl<T>) this.getNext()).removeLast();
 			}
 		}
 	}
-	
+
 	@Override
 	public RecursiveDoubleLinkedListImpl<T> getNext() {
 		return (RecursiveDoubleLinkedListImpl<T>) super.getNext();

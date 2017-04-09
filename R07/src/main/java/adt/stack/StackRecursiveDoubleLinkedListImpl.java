@@ -28,7 +28,7 @@ public class StackRecursiveDoubleLinkedListImpl<T> implements Stack<T> {
 		if (this.isEmpty()) {
 			throw new StackUnderflowException();
 		}
-		T element = ((RecursiveSingleLinkedListImpl<T>) top).getData();
+		T element = this.top();
 		top.removeLast();
 		return element;
 	}
@@ -36,7 +36,11 @@ public class StackRecursiveDoubleLinkedListImpl<T> implements Stack<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public T top() {
-		return (T) this.top;
+		if (this.isEmpty()) {
+			return null;
+		}
+		T aux = this.top.toArray()[this.top.size() - 1];
+		return aux;
 	}
 
 	@Override
