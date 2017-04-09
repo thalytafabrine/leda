@@ -17,8 +17,9 @@ public class StackDoubleLinkedListImpl<T> implements Stack<T> {
 
 	@Override
 	public void push(T element) throws StackOverflowException {
-		if (!isFull()) {
+		if (!isFull() && element != null) {
             this.top.insert(element);
+            size--;
         } else {
             throw new StackOverflowException();
         }
@@ -27,8 +28,9 @@ public class StackDoubleLinkedListImpl<T> implements Stack<T> {
 	@Override
 	public T pop() throws StackUnderflowException {
 		if (!isEmpty()) {
-            T element = this.top();
+            T element = ((DoubleLinkedListImpl<T>) top).getLast().getData();
             this.top.removeLast();
+            size++;
             return element;
         } else {
             throw new StackUnderflowException();
@@ -37,10 +39,7 @@ public class StackDoubleLinkedListImpl<T> implements Stack<T> {
 
 	@Override
 	public T top() {
-		T element = null;
-		if (!isEmpty())
-			element = ((DoubleLinkedListImpl<T>) top).getHead().getData();
-		return element;
+		return ((DoubleLinkedListImpl<T>) top).getLast().getData();
 	}
 
 	@Override
@@ -50,7 +49,7 @@ public class StackDoubleLinkedListImpl<T> implements Stack<T> {
 
 	@Override
 	public boolean isFull() {
-		return this.top.size() == this.size;
+		return this.size == 0;
 	}
 
 }

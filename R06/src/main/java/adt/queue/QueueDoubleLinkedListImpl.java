@@ -2,6 +2,7 @@ package adt.queue;
 
 import adt.linkedList.DoubleLinkedList;
 import adt.linkedList.DoubleLinkedListImpl;
+import adt.linkedList.SingleLinkedListImpl;
 
 public class QueueDoubleLinkedListImpl<T> implements Queue<T> {
 
@@ -20,13 +21,17 @@ public class QueueDoubleLinkedListImpl<T> implements Queue<T> {
 		if (isFull()) {
 			throw new QueueOverflowException();
 		}
-		list.insert(element);
+		if (element != null) {
+			list.insert(element);
+			size--;
+		}
 	}
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
 		if (!isEmpty()) {
-            T element = this.head();
+            T element = ((DoubleLinkedListImpl<T>) list).getHead().getData();
+            size++;
             this.list.removeFirst();
             return element;
         } else {
@@ -36,10 +41,7 @@ public class QueueDoubleLinkedListImpl<T> implements Queue<T> {
 
 	@Override
 	public T head() {
-		T element = null;
-		if (!isEmpty())
-			element = ((DoubleLinkedListImpl<T>) list).getHead().getData();
-		return element;
+		return ((DoubleLinkedListImpl<T>) list).getHead().getData();
 	}
 
 	@Override
@@ -49,7 +51,7 @@ public class QueueDoubleLinkedListImpl<T> implements Queue<T> {
 
 	@Override
 	public boolean isFull() {
-		return this.size == list.size();
+		return this.size == 0;
 	}
 
 }
