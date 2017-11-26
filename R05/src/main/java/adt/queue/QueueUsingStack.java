@@ -16,10 +16,12 @@ public class QueueUsingStack<T> implements Queue<T> {
 
     @Override
     public void enqueue(T element) throws QueueOverflowException {
+    	if (stack1.isFull())
+    		throw new QueueOverflowException();
     	try {
     		stack1.push(element);
    		} catch (StackOverflowException e) {
-   			throw new QueueOverflowException();
+   			e.printStackTrace();
    		}
     }
 
